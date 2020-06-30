@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+        paddingTop: 30,
     },
     usericon:{
         paddingBottom: 20,
@@ -58,8 +59,6 @@ const styles = StyleSheet.create({
         height: 'auto',
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: 50,
         paddingBottom:50
     },
     item: {

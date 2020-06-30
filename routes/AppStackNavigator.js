@@ -3,6 +3,7 @@ import { createStackNavigator, createNavigationContainer } from "react-navigatio
 import UserDetailScreen from '../screens/UserDetailScreen';
 import HomeScreen from '../screens/HomeScreen';
 import EditUserDetail from '../screens/EditUserDetail';
+import FilingCaseScreen from '../screens/FilingCaseScreen';
 
 
 
@@ -39,6 +40,12 @@ const StackNavigator = createStackNavigator({
         screen: EditUserDetail,
         navigationOptions: {
             title: 'Meine Daten'
+        }
+    },
+    FilingCase:{
+        screen: FilingCaseScreen,
+        navigationOptions: {
+            title: 'Schaden Melden'
         }
     }
 }, {

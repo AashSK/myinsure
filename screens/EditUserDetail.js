@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { StyleSheet, Text, View, TouchableHighlight, Image, TouchableOpacity, TextInput } from 'react-native'
+import React from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native'
 import { useState } from 'react'
-import { HeaderTitle } from 'react-navigation';
+
 
 
 const EditUserDetail = () => {
@@ -15,43 +15,36 @@ const EditUserDetail = () => {
         <View style={styles.container}>
 
             <View style={styles.case}>
-                <View>
-                    <Text>Street </Text>
-                    <TextInput style={styles.input}
-                        placeholder='Max-Muster Str. 10'
-                        onChangeText={(val) => setStreet(val)} />
-                    <Text>{street}</Text>
-                </View>
 
-                <View>
-                    <Text>Post Code </Text>
-                    <TextInput style={styles.input}
-                        placeholder='44134'
-                        onChangeText={(val) => setPCode(val)} />
-                    <Text>{postCode}</Text>
-                </View>
+                <Text>Street </Text>
+                <TextInput style={styles.input}
+                    placeholder='Max-Muster Str. 10'
+                    onChangeText={(val) => setStreet(val)} />
+                <Text>{street}</Text>
 
-                <View>
-                    <Text>Email: </Text>
-                    <TextInput style={styles.input}
-                        placeholder='muster@myinsure.com'
-                        onChangeText={(val) => setEmail(val)} />
-                    <Text>{email}</Text>
-                </View>
+                <Text>Post Code </Text>
+                <TextInput style={styles.input}
+                    placeholder='44134'
+                    onChangeText={(val) => setPCode(val)} />
+                <Text>{postCode}</Text>
+
+                <Text>Email: </Text>
+                <TextInput style={styles.input}
+                    placeholder='muster@myinsure.com'
+                    onChangeText={(val) => setEmail(val)} />
+                <Text>{email}</Text>
 
 
-                <View>
-                    <Text>Mobile: </Text>
-                    <TextInput style={styles.input}
-                        placeholder='+49 *******'
-                        onChangeText={(val) => setMobile(val)} />
-                    <Text>{mobile}</Text>
-                </View>
+                <Text>Mobile: </Text>
+                <TextInput style={styles.input}
+                    placeholder='+49 *******'
+                    onChangeText={(val) => setMobile(val)} />
+                <Text>{mobile}</Text>
 
-            </View>
+                <TouchableOpacity style={styles.btn} onPress={() => alert('This function will be avaiable soon!')}>
+                    <Text style={styles.btnText}>Save</Text> 
+                </TouchableOpacity>
 
-            <View style={styles.head}>
-                <TouchableOpacity><Text style={[styles.button]} onPress={()=> alert('This function will be avaiable soon!')}> Save</Text></TouchableOpacity>
             </View>
         </View>
 
@@ -63,27 +56,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        justifyContent:'space-between'
-
-    },
-    head: {
         alignItems: 'center',
-
-    },
-    case: {
-        marginTop:20,
-        flexDirection: 'column',
-        alignItems: 'center',
-
+        paddingTop:50,
     },
     title: {
         color: '#57B8FF',
         fontSize: 30,
         fontWeight: 'bold',
-
-
     },
-
     input: {
         borderColor: 'grey',
         borderWidth: 1,
@@ -92,7 +72,10 @@ const styles = StyleSheet.create({
         margin: 10
 
     },
-    button: {
+    btn: {
+        borderRadius: 5,
+    },
+    btnText: {
         backgroundColor: '#57B8FF',
         color: '#fff',
         fontSize: 20,
