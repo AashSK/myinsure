@@ -1,6 +1,8 @@
 # myinsure
 
-## To run this project you need to install cocoapods in version 1.8
+## Cocoapods
+
+### To run this project you need to install cocoapods in version 1.8
 
 ###### To check if you already have cocoapods type $ pod --version in your terminal
 
