@@ -1,5 +1,11 @@
 # myinsure
 
+## Node 
+
+### To run this project you need to install Node
+
+###### You can install node via package manager or download it manually https://nodejs.org/en/
+
 ## Cocoapods
 
 ### To run this project you need to install cocoapods in version 1.8
@@ -10,13 +16,19 @@
 
 ###### To install v1.8.4 $ sudo gem install cocoapods -v 1.8.4
 
-## Choose a directory in terminal in which you want to clone this project
+## Cloning this project 
+
+### Choose a directory in your terminal in which you want to clone this project
 
 ###### Run $ git clone https://github.com/AashSK/myinsure.git
 
-###### After cloning Run $ npm install in the same directory to install all needed dependencies
+## Installing dependencies
 
-###### Then change to the Mobile SDK directory with $ cd mobile_sdk/
+###### Run $ npm install in the same directory to install all needed dependencies
+
+## Installing Salesforce Mobile SDK
+
+###### Change to the Mobile SDK directory with $ cd mobile_sdk/
 
 ###### In the Mobile SDK Directory run $ git clone https://github.com/forcedotcom/SalesforceMobileSDK-iOS.git to install the Salesforce Mobile SDK
 
@@ -26,13 +38,17 @@
 
 ###### Update sql cipher with $ pod update SQLCipher/fts
 
-###### Then run $ pod install
+###### Then run $ pod install 
+
+## Starting the Server
 
 ###### Go back to the root directory again $ cd - 
 
 ###### Run $ npm start to start the server 
 
-## Open another terminal window and change the directory to where your project is located 
+## Running IOS simulator 
+
+### Open another terminal window and change the directory to where your project is located 
 
 ###### Run $ react-native run-ios to run the iOS simulator
 
