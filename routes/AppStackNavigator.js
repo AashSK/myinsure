@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createStackNavigator, createNavigationContainer } from "react-navigation";
 import UserDetailScreen from '../screens/UserDetailScreen';
 import HomeScreen from '../screens/HomeScreen';
+import EditUserDetail from '../screens/EditUserDetail';
 
 
 
@@ -34,6 +35,12 @@ const StackNavigator = createStackNavigator({
             title: 'Meine Daten'
         }
     },
+    EditUserDetail:{
+        screen: EditUserDetail,
+        navigationOptions: {
+            title: 'Meine Daten'
+        }
+    }
 }, {
     initialRouteName: 'Startseite',
     navigationOptions: {

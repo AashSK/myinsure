@@ -35,7 +35,7 @@ class UserDetailScreen extends Component {
                         )
                         }
                     />
-                    <TouchableOpacity style={styles.btn}>
+                    <TouchableOpacity style={styles.btn} onPress ={()=>this.props.navigation.navigate('EditUserDetail')}>
                         <Text style={styles.btnText}>Editieren
                     <Icon name='edit' size={20} />
                         </Text>
