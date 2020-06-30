@@ -10,7 +10,7 @@
 
 ## Choose a directory in terminal in which you want to clone this project
 
-###### Run git clone https://github.com/AashSK/myinsure.git
+###### Run $ git clone https://github.com/AashSK/myinsure.git
 
 ###### After cloning Run $ npm install in the same directory to install all needed dependencies
 
