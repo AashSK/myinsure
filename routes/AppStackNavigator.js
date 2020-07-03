@@ -36,13 +36,13 @@ const StackNavigator = createStackNavigator({
             title: 'Meine Daten'
         }
     },
-    EditUserDetail:{
+    EditUserDetail: {
         screen: EditUserDetail,
         navigationOptions: {
             title: 'Meine Daten'
         }
     },
-    FilingCase:{
+    FilingCase: {
         screen: FilingCaseScreen,
         navigationOptions: {
             title: 'Schaden Melden'
@@ -66,10 +66,11 @@ const StackNavigator = createStackNavigator({
 });
 
 const AppNavigationContainer = createNavigationContainer(StackNavigator);
-export default class AppStackNavigator extends Component {
-    render() {
-        return <AppNavigationContainer
-            screenProps={{ openDrawer: () => this.props.navigation.openDrawer() }}
-        />
-    }
+const AppStackNavigator = ({ navigation }) => {
+
+    return <AppNavigationContainer
+        screenProps={{ openDrawer: () => navigation.openDrawer() }}
+    />
 }
+
+export default AppStackNavigator

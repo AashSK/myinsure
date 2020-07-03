@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 
 
-const EditUserDetail = () => {
+const EditUserDetail = ({ navigation }) => {
 
     const [street, setStreet] = useState('');
     const [postCode, setPCode] = useState('');
@@ -42,7 +42,7 @@ const EditUserDetail = () => {
                 <Text>{mobile}</Text>
 
                 <TouchableOpacity style={styles.btn} onPress={() => alert('This function will be avaiable soon!')}>
-                    <Text style={styles.btnText}>Save</Text> 
+                    <Text style={styles.btnText}>Save</Text>
                 </TouchableOpacity>
 
             </View>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        paddingTop:50,
+        paddingTop: 50,
     },
     title: {
         color: '#57B8FF',

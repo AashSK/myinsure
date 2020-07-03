@@ -2,18 +2,17 @@ import React, { Component } from 'react'
 import { Text, View, Button, StyleSheet } from 'react-native'
 
 
-class Infoscreen extends Component {
+const Infoscreen = ({ navigation }) => {
+ // No Header displayed to display header create new Stacknavigtor
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text> User Detail Screen </Text>
-                <Button title="Home" onPress={() =>
-                    this.props.navigation.navigate('Startseite')
-                } />
-            </View>
-        )
-    }
+    return (
+        <View style={styles.container}>
+            <Text> Info Screen </Text>
+            <Button title="Home" onPress={() =>
+                navigation.navigate('Startseite')
+            } />
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({

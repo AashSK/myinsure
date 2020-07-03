@@ -3,15 +3,8 @@ import { Text, View, Button, StyleSheet, FlatList, TouchableOpacity } from 'reac
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 
-class HomeScreen extends Component {
+const HomeScreen = ({ navigation }) => {
 
-    static navigationOptions = ({ screenProps }) => ({
-        headerLeft: (
-            <TouchableOpacity onPress={() => screenProps.openDrawer()} >
-                <Icon style={{ color: '#fff', marginLeft: 20 }} name="navicon" size={24} />
-            </TouchableOpacity>
-        ),
-    })
 
     state = {
         data: [
@@ -22,11 +15,9 @@ class HomeScreen extends Component {
         ]
     };
 
-    render() {
-
-        return (
-            <View style={styles.container} >
-                {/*<Text> This is the Home Screen </Text>
+    return (
+        <View style={styles.container} >
+            {/*<Text> This is the Home Screen </Text>
                 <Button
                     title="UserDetail"
                     onPress={() =>
@@ -36,26 +27,32 @@ class HomeScreen extends Component {
                     <Icon name="apple" size={20} />
                 </TouchableOpacity>*/}
 
-                <FlatList
-                    numColumns={2}
-                    data={this.state.data}
-                    keyExtractor={(item) => item.id}
-                    renderItem={({ item }) => {
-                        return (
-                            <TouchableOpacity style={styles.iconlist} onPress={() =>
-                                this.props.navigation.navigate(item.screen)
-                            } >
-                                <View style={styles.icon}>
-                                    <Icon style={{ color: '#fff' }} name={item.icon} size={60} />
-                                </View>
-                                <Text style={styles.title}>{item.title}</Text>
-                            </TouchableOpacity>
-                        )
-                    }} />
-            </View>
-        )
-    }
+            <FlatList
+                numColumns={2}
+                data={state.data}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => {
+                    return (
+                        <TouchableOpacity style={styles.iconlist} onPress={() => navigation.navigate(item.screen)
+                        } >
+                            <View style={styles.icon}>
+                                <Icon style={{ color: '#fff' }} name={item.icon} size={60} />
+                            </View>
+                            <Text style={styles.title}>{item.title}</Text>
+                        </TouchableOpacity>
+                    )
+                }} />
+        </View>
+    )
 }
+
+HomeScreen.navigationOptions = ({ screenProps }) => ({
+    headerLeft: (
+        <TouchableOpacity onPress={() => screenProps.openDrawer()} >
+            <Icon style={{ color: '#fff', marginLeft: 20 }} name="navicon" size={24} />
+        </TouchableOpacity>
+    ),
+})
 
 const styles = StyleSheet.create({
     container: {
@@ -68,7 +65,7 @@ const styles = StyleSheet.create({
         width: 180,
         height: 180,
         padding: 10,
-        marginTop:50,
+        marginTop: 50,
         alignItems: 'center',
         justifyContent: 'center',
     },

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableHighlight, Image, TouchableOpacity, Te
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 
-const FilingCaseScreen = () => {
+const FilingCaseScreen = ({navigation}) => {
     return (
 
         <View style={styles.container}>

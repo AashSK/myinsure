@@ -18,8 +18,8 @@ const DrawerNavigator = createDrawerNavigator({
 
 const AppNavigationContainer = createNavigationContainer(DrawerNavigator);
 
-export default class AppDrawerNavigator extends Component {
-    render() {
-        return <AppNavigationContainer />;
-    }
+const AppDrawerNavigator = () => {
+    return <AppNavigationContainer />;
 }
+
+export default AppDrawerNavigator

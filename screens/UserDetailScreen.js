@@ -13,37 +13,35 @@ const List = [
     { title: 'Adresse', data: [{ id: 5, data: 'Musterstraße 1 Hamburg' }] }
 ]
 
-class UserDetailScreen extends Component {
+const UserDetailScreen = ({ navigation }) => {
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <View style={styles.listContainer}>
-                    <Icon style ={styles.usericon} name='user-o' size={40} />
-                    <SectionList
-                        style={styles.itemList}
-                        sections={List}
-                        renderItem={({ item }) => (
-                            <View style={styles.item}>
-                                <Text style={styles.itemText} >{item.data}</Text>
-                            </View>
-                        )}
-                        renderSectionHeader={({ section: { title } }) => (
-                            <View style={styles.itemHeader}>
-                                <Text style={styles.itemHeaderText}>{title}</Text>
-                            </View>
-                        )
-                        }
-                    />
-                    <TouchableOpacity style={styles.btn} onPress ={()=>this.props.navigation.navigate('EditUserDetail')}>
-                        <Text style={styles.btnText}>Editieren
+    return (
+        <View style={styles.container}>
+            <View style={styles.listContainer}>
+                <Icon style={styles.usericon} name='user-o' size={40} />
+                <SectionList
+                    style={styles.itemList}
+                    sections={List}
+                    renderItem={({ item }) => (
+                        <View style={styles.item}>
+                            <Text style={styles.itemText} >{item.data}</Text>
+                        </View>
+                    )}
+                    renderSectionHeader={({ section: { title } }) => (
+                        <View style={styles.itemHeader}>
+                            <Text style={styles.itemHeaderText}>{title}</Text>
+                        </View>
+                    )
+                    }
+                />
+                <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('EditUserDetail')}>
+                    <Text style={styles.btnText}>Editieren
                     <Icon name='edit' size={20} />
-                        </Text>
-                    </TouchableOpacity>
-                </View>
+                    </Text>
+                </TouchableOpacity>
             </View>
-        )
-    }
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -52,14 +50,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         paddingTop: 30,
     },
-    usericon:{
+    usericon: {
         paddingBottom: 20,
     },
     listContainer: {
         height: 'auto',
         width: '100%',
         alignItems: 'center',
-        paddingBottom:50
+        paddingBottom: 50
     },
     item: {
         padding: 10,
