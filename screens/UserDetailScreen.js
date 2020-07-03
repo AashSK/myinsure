@@ -3,7 +3,8 @@ import { Text, View, Button, StyleSheet, SectionList, TouchableOpacity } from 'r
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 const person = {
-    name: 'John Doe'
+    name: 'John Doe',
+    Geburtsdatum: '10.9.1989'
 }
 const List = [
     { title: 'Name', data: [{ id: 1, data: person.name }] },
