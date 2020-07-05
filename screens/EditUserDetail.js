@@ -14,32 +14,28 @@ const EditUserDetail = ({ navigation }) => {
 
         <View style={styles.container}>
 
-            <View style={styles.case}>
+            <View style={styles.items}>
 
-                <Text>Street </Text>
+                <Text style={styles.label}>Street: </Text>
                 <TextInput style={styles.input}
                     placeholder='Max-Muster Str. 10'
                     onChangeText={(val) => setStreet(val)} />
-                <Text>{street}</Text>
 
-                <Text>Post Code </Text>
+                <Text style={styles.label}>Post Code: </Text>
                 <TextInput style={styles.input}
                     placeholder='44134'
                     onChangeText={(val) => setPCode(val)} />
                 <Text>{postCode}</Text>
 
-                <Text>Email: </Text>
+                <Text style={styles.label}>Email: </Text>
                 <TextInput style={styles.input}
                     placeholder='muster@myinsure.com'
                     onChangeText={(val) => setEmail(val)} />
-                <Text>{email}</Text>
 
-
-                <Text>Mobile: </Text>
+                <Text style={styles.label}>Mobile: </Text>
                 <TextInput style={styles.input}
                     placeholder='+49 *******'
                     onChangeText={(val) => setMobile(val)} />
-                <Text>{mobile}</Text>
 
                 <TouchableOpacity style={styles.btn} onPress={() => alert('This function will be avaiable soon!')}>
                     <Text style={styles.btnText}>Save</Text>
@@ -56,31 +52,37 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
-        paddingTop: 50,
+        paddingTop: 30,
     },
-    title: {
-        color: '#57B8FF',
-        fontSize: 30,
+    items: {
+        height: 'auto',
+        width: '100%',
+        alignItems: 'center',
+        paddingBottom: 50
+
+    },
+    label:{
+        fontSize: 18,
+        padding: 10,
         fontWeight: 'bold',
     },
     input: {
-        borderColor: 'grey',
+        borderColor: '#A8A7AA',
         borderWidth: 1,
         width: 200,
         padding: 8,
-        margin: 10
-
-    },
-    btn: {
+        margin: 10,
         borderRadius: 5,
     },
-    btnText: {
+    btn: {
         backgroundColor: '#57B8FF',
+        borderRadius: 5,
+        alignSelf: 'center',
+        padding: 10,
+        margin:20,
+    },
+    btnText: {
         color: '#fff',
         fontSize: 20,
-        padding: 15,
-        width: "50%",
-        marginBottom: 50
     },
 });

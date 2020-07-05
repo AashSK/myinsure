@@ -7,8 +7,8 @@ const FilingCaseScreen = ({navigation}) => {
     return (
 
         <View style={styles.container}>
-            <View style={{ alignItems: 'center' }} >
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Beschreibung: </Text>
+            <View style={{ marginTop:50, alignItems: 'center' }} >
+                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Beschreibung: </Text>
                 <TextInput
                     style={{
                         borderColor: 'grey',
@@ -56,10 +56,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: '#57B8FF',
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: 'bold',
-
-
     },
 
     input: {
@@ -70,6 +68,7 @@ const styles = StyleSheet.create({
         margin: 10
 
     },
+
     button: {
         backgroundColor: '#57B8FF',
         color: '#fff',
