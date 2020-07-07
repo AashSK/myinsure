@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Text, View, Button, StyleSheet, SectionList, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { oauth, net } from 'react-native-force';
 
 const person = {
     name: 'John Doe',
-    Geburtsdatum: '10.9.1989'
+    Geburtsdatum: '10.9.1989',
 }
+
 const List = [
     { title: 'Name', data: [{ id: 1, data: person.name }] },
     { title: 'Geburtsdatum', data: [{ id: 2, data: '10.9.1989' }] },
@@ -14,7 +16,41 @@ const List = [
     { title: 'Adresse', data: [{ id: 5, data: 'Musterstraße 1 Hamburg' }] }
 ]
 
+function fetchUserId() {
+    const [data, setData] = useState('');
+
+    async function getDataFromAPI() {
+        await oauth.getAuthCredentials((
+            (response) => { setData(response)}
+        ))
+    }
+    useEffect(() => {
+        getDataFromAPI();
+    }, [])
+    return data.userId;
+}
+
+function fetchAccountId(userId){
+    const [data, setData] = useState('');
+    async function getDataFromAPI() {
+        await net.query(userId ? `SELECT AccountId FROM User WHERE Id = '${userId}' `: '', (
+            (response) => { setData(response)}
+        ))
+    }
+    useEffect(() => {
+        getDataFromAPI();
+    }, [])
+    return data.AccountId;
+}
+
+
 const UserDetailScreen = ({ navigation }) => {
+
+    const [personDetails, setUserDetails] = useState('');
+    const [userDetail, setUserDetail] = useState('');
+
+    const userId = fetchUserId();
+    const accountId = fetchAccountId(userId);
 
     return (
         <View style={styles.container}>

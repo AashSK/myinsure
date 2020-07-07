@@ -37,9 +37,6 @@
 #import <SalesforceSDKCore/SFSDKAuthHelper.h>
 
 @implementation AppDelegate
-static NSString * const RemoteAccessConsumerKey = 
-    @"3MVG9dZJodJWITSvqTroEt611HoVv2hC9IwkPtPzvxKnSsYbFXfxHbUlh5sQRyDy5GuSAwPWUIVvK3Ax5nE1f";
-static NSString * const OAuthRedirectURI = @"myinsure://auth/success";
 
 - (id)init
 {
