@@ -8,9 +8,7 @@ const Logout = () => {
 
     return (
         <View>
-            <Text>
-                Logout Successfull
-            </Text>
+        
         </View>
     )
 }
