@@ -6,8 +6,6 @@ import EditUserDetail from '../screens/EditUserDetail';
 import FilingCaseScreen from '../screens/FilingCaseScreen';
 
 
-
-
 const StackNavigator = createStackNavigator({
     Startseite: {
         screen: HomeScreen,
@@ -39,7 +37,7 @@ const StackNavigator = createStackNavigator({
     EditUserDetail: {
         screen: EditUserDetail,
         navigationOptions: {
-            title: 'Meine Daten'
+            title: 'Daten bearbeiten'
         }
     },
     FilingCase: {

@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
-import { Text, View, Button, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
+import React from 'react'
+import { Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 
 const HomeScreen = ({ navigation }) => {
-
-
+    
     state = {
         data: [
             { id: "1", title: 'Meine Daten', icon: 'user-circle-o', screen: 'UserDetail' },
@@ -17,16 +16,6 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container} >
-            {/*<Text> This is the Home Screen </Text>
-                <Button
-                    title="UserDetail"
-                    onPress={() =>
-                        this.props.navigation.navigate('UserDetail')
-                    } />
-                <TouchableOpacity >
-                    <Icon name="apple" size={20} />
-                </TouchableOpacity>*/}
-
             <FlatList
                 numColumns={2}
                 data={state.data}
@@ -44,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
                 }} />
         </View>
     )
-}
+};
 
 HomeScreen.navigationOptions = ({ screenProps }) => ({
     headerLeft: (
@@ -52,7 +41,7 @@ HomeScreen.navigationOptions = ({ screenProps }) => ({
             <Icon style={{ color: '#fff', marginLeft: 20 }} name="navicon" size={24} />
         </TouchableOpacity>
     ),
-})
+});
 
 const styles = StyleSheet.create({
     container: {
@@ -83,7 +72,6 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.34,
         shadowRadius: 6.27,
-
         elevation: 10,
     },
     title: {
@@ -97,4 +85,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default HomeScreen
+export default HomeScreen;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Text, View, Button, StyleSheet } from 'react-native'
 
 
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Infoscreen
+export default Infoscreen;
