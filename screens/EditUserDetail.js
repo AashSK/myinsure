@@ -1,47 +1,75 @@
-import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native'
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import * as data from '../data/data';
 
 
 
 const EditUserDetail = ({ navigation }) => {
 
-    const [street, setStreet] = useState('');
-    const [postCode, setPCode] = useState('');
-    const [email, setEmail] = useState('');
-    const [mobile, setMobile] = useState('');
+    const [personDetails, setPersonDetails] = useState('');
+    const personCopy = { ...personDetails };
+
+    useEffect(() => {
+        data.getDetails(data.editableData).then(data => {
+            setPersonDetails(data);
+        })
+        // data.getDetails(data.updateData)
+    }, []);
+
+    changeData = () => {
+        console.log(personCopy.PersonMobilePhone);
+        data.updateDetails(data.updateData, personCopy);
+    }
+
     return (
 
         <View style={styles.container}>
+            <ScrollView>
+                <View style={styles.items}>
 
-            <View style={styles.items}>
+                    <TextInput style={styles.input}
+                        textContentType='fullStreetAddress'
+                        placeholder='Street'
+                        onChangeText={(val) => { personCopy.BillingStreet = val }} />
 
-                <Text style={styles.label}>Street: </Text>
-                <TextInput style={styles.input}
-                    placeholder='Max-Muster Str. 10'
-                    onChangeText={(val) => setStreet(val)} />
+                    <TextInput style={styles.input}
+                        textContentType='addressCity'
+                        placeholder='City'
+                        onChangeText={(val) => { personCopy.BillingCity = val }} />
 
-                <Text style={styles.label}>Post Code: </Text>
-                <TextInput style={styles.input}
-                    placeholder='44134'
-                    onChangeText={(val) => setPCode(val)} />
-                <Text>{postCode}</Text>
+                    <TextInput style={styles.input}
+                        keyboardType='numeric'
+                        textContentType='postalCode'
+                        placeholder='Postal Code'
+                        onChangeText={(val) => { personCopy.BillingPostalCode = val }} />
 
-                <Text style={styles.label}>Email: </Text>
-                <TextInput style={styles.input}
-                    placeholder='muster@myinsure.com'
-                    onChangeText={(val) => setEmail(val)} />
+                    <TextInput style={styles.input}
+                        textContentType='addressState'
+                        placeholder='State'
+                        onChangeText={(val) => { personCopy.BillingState = val }} />
 
-                <Text style={styles.label}>Mobile: </Text>
-                <TextInput style={styles.input}
-                    placeholder='+49 *******'
-                    onChangeText={(val) => setMobile(val)} />
+                    <TextInput style={styles.input}
+                        textContentType='emailAddress'
+                        placeholder='E-Mail address'
+                        onChangeText={(val) => { personCopy.PersonEmail = val }} />
 
-                <TouchableOpacity style={styles.btn} onPress={() => alert('This function will be avaiable soon!')}>
-                    <Text style={styles.btnText}>Save</Text>
-                </TouchableOpacity>
+                    <TextInput style={styles.input}
+                        keyboardType='phone-pad'
+                        textContentType='telephoneNumber'
+                        placeholder='Phone Number'
+                        onChangeText={(val) => {
+                            personCopy.PersonMobilePhone = val
 
-            </View>
+                        }} />
+
+                    <TouchableOpacity style={styles.btn} onPress={() => {
+                        changeData()
+                    }}>
+                        <Text style={styles.btnText}>Save</Text>
+                    </TouchableOpacity>
+
+                </View>
+            </ScrollView>
         </View>
 
     )
@@ -59,15 +87,9 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         paddingBottom: 50
-
-    },
-    label:{
-        fontSize: 18,
-        padding: 10,
-        fontWeight: 'bold',
     },
     input: {
-        borderColor: '#A8A7AA',
+        borderColor: '#3b444b',
         borderWidth: 1,
         width: 200,
         padding: 8,
@@ -79,7 +101,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         alignSelf: 'center',
         padding: 10,
-        margin:20,
+        margin: 20,
     },
     btnText: {
         color: '#fff',

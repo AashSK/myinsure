@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     },
     head: {
         alignItems: 'center',
-
     },
     case: {
         marginTop: 20,
@@ -73,7 +72,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#57B8FF',
         color: '#fff',
         fontSize: 20,
-        padding: 15,
+        padding: 10,
         width: "50%",
         marginBottom: 50
     },

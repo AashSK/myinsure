@@ -1,25 +1,26 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { Text, View, Button, StyleSheet, SectionList, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import * as Data from '../data/Data'
-import { oauth, net } from 'react-native-force';
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, SectionList, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import * as data from '../data/data';
 
 const UserDetailScreen = ({ navigation }) => {
 
     const [personDetails, setPersonDetails] = useState('');
+    const [addressString, setAddressString] = useState('');
 
     useEffect(() => {
-        Data.getDetails().then(data => {
+        data.getDetails(data.fetchData).then(data => {
             setPersonDetails(data);
+            setAddressString(`${data.BillingStreet}\n${data.BillingPostalCode} ${data.BillingCity}\n${data.BillingState}`);
         })
     }, []);
 
     const List = [
         { title: 'Name', data: [{ id: 1, data: `${personDetails.Name}` }] },
-        { title: 'Geburtsdatum', data: [{ id: 2, data: '10.9.1989' }] },
+        { title: 'Geburtsdatum', data: [{ id: 2, data: `${new Date(personDetails.PersonBirthdate).toDateString()}` }] },
         { title: 'E-Mail', data: [{ id: 3, data: `${personDetails.PersonEmail}` }] },
         { title: 'Telefonnummer', data: [{ id: 4, data: `${personDetails.PersonMobilePhone}` }] },
-        { title: 'Adresse', data: [{ id: 5, data: 'Musterstraße 1 Hamburg' }] }
+        { title: 'Adresse', data: [{ id: 5, data: `${addressString}` }] }
     ];
 
     return (
@@ -90,7 +91,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 20,
     }
-
 })
 
 export default UserDetailScreen;
