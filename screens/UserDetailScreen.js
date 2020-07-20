@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, SectionList, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import * as data from '../data/data';
+import * as data from '../data/userData';
 
 const UserDetailScreen = ({ navigation }) => {
 
-    const [personDetails, setPersonDetails] = useState('');
+    const [personDetails, setPersonDetails] = useState({
+        "BillingCity": "",
+        "BillingPostalCode": "",
+        "BillingState": "",
+        "BillingStreet": "",
+        "Name": "",
+        "PersonBirthdate": "",
+        "PersonEmail": "",
+        "PersonMobilePhone": "",
+    });
     const [addressString, setAddressString] = useState('');
 
     useEffect(() => {
@@ -14,10 +23,10 @@ const UserDetailScreen = ({ navigation }) => {
             setAddressString(`${data.BillingStreet}\n${data.BillingPostalCode} ${data.BillingCity}\n${data.BillingState}`);
         })
     }, []);
-
+    
     const List = [
         { title: 'Name', data: [{ id: 1, data: `${personDetails.Name}` }] },
-        { title: 'Geburtsdatum', data: [{ id: 2, data: `${new Date(personDetails.PersonBirthdate).toDateString()}` }] },
+        { title: 'Geburtsdatum', data: [{ id: 2, data: `${personDetails.PersonBirthdate ? new Date(personDetails.PersonBirthdate).toDateString() : ''}` }] },
         { title: 'E-Mail', data: [{ id: 3, data: `${personDetails.PersonEmail}` }] },
         { title: 'Telefonnummer', data: [{ id: 4, data: `${personDetails.PersonMobilePhone}` }] },
         { title: 'Adresse', data: [{ id: 5, data: `${addressString}` }] }
@@ -26,7 +35,7 @@ const UserDetailScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.listContainer}>
-                <Icon style={styles.usericon} name='user-o' size={40} />
+                {/*<Icon style={styles.usericon} name='user-o' size={40} />*/}
                 <SectionList
                     style={styles.itemList}
                     sections={List}
@@ -44,7 +53,7 @@ const UserDetailScreen = ({ navigation }) => {
                 />
                 <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('EditUserDetail')}>
                     <Text style={styles.btnText}>Editieren
-                    <Icon name='edit' size={20} />
+                    <Icon name='edit' style={styles.btnIcon} size={20} />
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -55,33 +64,37 @@ const UserDetailScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        paddingTop: 30,
-    },
-    usericon: {
-        paddingBottom: 20,
+        backgroundColor: '#f3f5f6',
+        paddingTop: 20,
     },
     listContainer: {
         height: 'auto',
         width: '100%',
-        alignItems: 'center',
-        paddingBottom: 50
+        paddingBottom: 10,
+        paddingTop: 20,
+        backgroundColor: '#fff' 
     },
     item: {
-        padding: 10,
         borderBottomWidth: 1,
-        borderBottomColor: '#f0eff3',
+        borderBottomColor: '#d9d9d9',
+        paddingLeft: 10,
+        marginBottom: 20,
     },
     itemText: {
         fontSize: 14,
+        padding: 10,
+    },
+    itemHeader:{
+        paddingLeft: 10
     },
     itemHeaderText: {
-        fontSize: 18,
+        fontSize: 15,
         padding: 10,
         fontWeight: 'bold',
+        color: '#002c6d'
     },
     btn: {
-        backgroundColor: '#57B8FF',
+        backgroundColor: '#002c6d',
         borderRadius: 5,
         padding: 10,
         margin: 20,
@@ -89,7 +102,12 @@ const styles = StyleSheet.create({
     },
     btnText: {
         color: '#fff',
-        fontSize: 20,
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    btnIcon:{
+        fontWeight: 'bold',
+        marginLeft: 10
     }
 })
 

@@ -1,24 +1,44 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
-import * as data from '../data/data';
-
-
+import * as data from '../data/userData';
 
 const EditUserDetail = ({ navigation }) => {
 
     const [personDetails, setPersonDetails] = useState('');
-    const personCopy = { ...personDetails };
+    const [street, setStreet] = useState('');
+    const [city, setCity] = useState('');
+    const [postalCode, setPostalCode] = useState('');
+    const [state, setState] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+
+    let person = {};
 
     useEffect(() => {
         data.getDetails(data.editableData).then(data => {
             setPersonDetails(data);
         })
-        // data.getDetails(data.updateData)
     }, []);
 
     changeData = () => {
-        console.log(personCopy.PersonMobilePhone);
-        data.updateDetails(data.updateData, personCopy);
+        Object.assign(person, {
+            "BillingCity": city ? city : personDetails.BillingCity,
+            "BillingPostalCode": postalCode ? postalCode : personDetails.BillingPostalCode,
+            "BillingState": state ? state : personDetails.BillingState,
+            "BillingStreet": street ? street : personDetails.BillingStreet,
+            "PersonEmail": email ? email : personDetails.PersonEmail,
+            "PersonMobilePhone": phone ? phone : personDetails.PersonMobilePhone,
+        })
+
+        data.updateDetails(data.updateData, person);
+
+        setCity('');
+        setStreet('');
+        setState('');
+        setPhone('');
+        setPostalCode('');
+        setPostalCode('');
+
     }
 
     return (
@@ -27,45 +47,44 @@ const EditUserDetail = ({ navigation }) => {
             <ScrollView>
                 <View style={styles.items}>
 
+                    <Text style={styles.label}>Kontaktadresse</Text>
                     <TextInput style={styles.input}
-                        textContentType='fullStreetAddress'
-                        placeholder='Street'
-                        onChangeText={(val) => { personCopy.BillingStreet = val }} />
-
-                    <TextInput style={styles.input}
-                        textContentType='addressCity'
-                        placeholder='City'
-                        onChangeText={(val) => { personCopy.BillingCity = val }} />
+                        placeholder='Straße'
+                        value={street}
+                        onChangeText={(val) => { setStreet(val) }} />
 
                     <TextInput style={styles.input}
                         keyboardType='numeric'
-                        textContentType='postalCode'
-                        placeholder='Postal Code'
-                        onChangeText={(val) => { personCopy.BillingPostalCode = val }} />
+                        placeholder='Postleitzahl'
+                        value={postalCode}
+                        onChangeText={(val) => { setPostalCode(val) }} />
 
                     <TextInput style={styles.input}
-                        textContentType='addressState'
-                        placeholder='State'
-                        onChangeText={(val) => { personCopy.BillingState = val }} />
+                        placeholder='Ort'
+                        value={city}
+                        onChangeText={(val) => { setCity(val) }} />
 
                     <TextInput style={styles.input}
-                        textContentType='emailAddress'
-                        placeholder='E-Mail address'
-                        onChangeText={(val) => { personCopy.PersonEmail = val }} />
+                        placeholder='Bundesstaat'
+                        value={state}
+                        onChangeText={(val) => { setState(val) }} />
+
+                    <Text style={styles.label}>E-Mail und Rufnummer</Text>
+                    <TextInput style={styles.input}
+                        placeholder='E-Mail adresse'
+                        value={email}
+                        onChangeText={(val) => { setEmail(val) }} />
 
                     <TextInput style={styles.input}
                         keyboardType='phone-pad'
-                        textContentType='telephoneNumber'
-                        placeholder='Phone Number'
-                        onChangeText={(val) => {
-                            personCopy.PersonMobilePhone = val
-
-                        }} />
+                        placeholder='Telefonnummer'
+                        value={phone}
+                        onChangeText={(val) => { setPhone(val) }} />
 
                     <TouchableOpacity style={styles.btn} onPress={() => {
                         changeData()
                     }}>
-                        <Text style={styles.btnText}>Save</Text>
+                        <Text style={styles.btnText}>Ändern</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -79,32 +98,39 @@ export default EditUserDetail
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        paddingTop: 30,
+        backgroundColor: '#f3f5f6',
+        paddingTop: 20,
+    },
+    label: {
+        fontSize: 15,
+        paddingLeft: 10,
+        paddingBottom: 10,
+        fontWeight: 'bold',
+        color: '#002c6d'
     },
     items: {
         height: 'auto',
         width: '100%',
-        alignItems: 'center',
-        paddingBottom: 50
+        backgroundColor: '#fff',
+        paddingTop: 20,
+        paddingBottom: 20,
     },
     input: {
-        borderColor: '#3b444b',
-        borderWidth: 1,
-        width: 200,
-        padding: 8,
-        margin: 10,
-        borderRadius: 5,
+        borderColor: '#d9d9d9',
+        borderBottomWidth: 1,
+        padding: 10,
+        marginBottom: 20,
     },
     btn: {
-        backgroundColor: '#57B8FF',
+        backgroundColor: '#002c6d',
         borderRadius: 5,
         alignSelf: 'center',
         padding: 10,
-        margin: 20,
+        margin: 10,
     },
     btnText: {
         color: '#fff',
-        fontSize: 20,
+        fontSize: 18,
+        fontWeight: 'bold',
     },
 });

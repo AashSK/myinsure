@@ -51,10 +51,10 @@ const StackNavigator = createStackNavigator({
     navigationOptions: {
         headerStyle: {
             height: 60,
-            backgroundColor: '#57B8FF',
+            backgroundColor: '#002c6d',
         },
         headerTitleStyle: {
-            fontSize: 22,
+            fontSize: 18,
             fontWeight: 'bold',
             color: 'white',
         },
