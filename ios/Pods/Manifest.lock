@@ -189,6 +189,8 @@ PODS:
     - React-cxxreact (= 0.61.3)
     - React-jsi (= 0.61.3)
   - React-jsinspector (0.61.3)
+  - react-native-image-picker (2.3.3):
+    - React
   - React-RCTActionSheet (0.61.3):
     - React-Core/RCTActionSheetHeaders (= 0.61.3)
   - React-RCTAnimation (0.61.3):
@@ -287,6 +289,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -343,6 +346,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-image-picker:
+    :path: "../node_modules/react-native-image-picker"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -396,6 +401,7 @@ SPEC CHECKSUMS:
   React-jsi: 8bcf5836caa8a759c135ab9ef97f3e023a7b94af
   React-jsiexecutor: ae078e9df9c65bcdcf68f9a17656657932d95528
   React-jsinspector: a8939cc6909607eb5e8a5ecfff7c6226984e174d
+  react-native-image-picker: a6c3d644751a388b0fc8b56822ff7cbd398a3008
   React-RCTActionSheet: 94671eef55b01a93be735605822ef712d5ea208e
   React-RCTAnimation: 524ae33e73de9c0fe6501a7a4bda8e01d26499d9
   React-RCTBlob: 5481c2db702f57207af7e7a9b32d90524b821b72
@@ -415,6 +421,6 @@ SPEC CHECKSUMS:
   SQLCipher: 0187a2180ac288ea686b670b7141da62cd013b16
   Yoga: 02036f6383c0008edb7ef0773a0e6beb6ce82bd1
 
-PODFILE CHECKSUM: f21614be218524af80d72ff19a559c72ef428e61
+PODFILE CHECKSUM: e5bbac39ace56631cac9e395caebd0e6f3c4468a
 
 COCOAPODS: 1.8.4

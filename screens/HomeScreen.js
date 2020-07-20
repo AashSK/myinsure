@@ -54,14 +54,14 @@ const styles = StyleSheet.create({
         width: 180,
         height: 180,
         padding: 10,
-        marginTop: 50,
+        marginTop: 80,
         alignItems: 'center',
         justifyContent: 'center',
     },
     icon: {
         width: 120,
         height: 120,
-        backgroundColor: '#57B8FF',
+        backgroundColor: '#002c6d',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 120 / 2,
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         alignSelf: 'center',
         fontWeight: 'bold',
+        color: '#002c6d'
     },
 
 

@@ -23,7 +23,7 @@ export let fetchData = (response) => new Promise((resolve, reject) => {
         (res) => {
             let account = res.records;
             account.filter(data => {
-                net.query(`SELECT Name, LastName, FirstName, PersonEmail, PersonMobilePhone, PersonBirthdate, BillingStreet, BillingCity, BillingState, BillingPostalCode FROM Account WHERE Id = '${data.AccountId}'`,
+                net.query(`SELECT Name, PersonEmail, PersonMobilePhone, PersonBirthdate, BillingStreet, BillingCity, BillingState, BillingPostalCode FROM Account WHERE Id = '${data.AccountId}'`,
                     (response) => {
                         let records = response.records;
                         resolve(records[records.length - 1]);
@@ -63,7 +63,7 @@ export let editableData = (response) => new Promise((resolve, reject) => {
         (res) => {
             let account = res.records;
             account.filter(data => {
-                net.query(`SELECT PersonEmail, PersonMobilePhone, PersonBirthdate, BillingStreet, BillingCity, BillingState, BillingPostalCode FROM Account WHERE Id = '${data.AccountId}'`,
+                net.query(`SELECT PersonEmail, PersonMobilePhone, BillingStreet, BillingCity, BillingState, BillingPostalCode FROM Account WHERE Id = '${data.AccountId}'`,
                     (response) => {
                         let records = response.records;
                         resolve(records[records.length - 1]);

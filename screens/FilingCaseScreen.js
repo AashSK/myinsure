@@ -3,36 +3,27 @@ import { StyleSheet, Text, View, TouchableHighlight, Image, TouchableOpacity, Te
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 
-const FilingCaseScreen = ({navigation}) => {
+const FilingCaseScreen = ({ navigation }) => {
+
     return (
-
         <View style={styles.container}>
-            <View style={{ marginTop:50, alignItems: 'center' }} >
-                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Beschreibung: </Text>
-                <TextInput
-                    style={{
-                        borderColor: 'grey',
-                        borderWidth: 1, height: 200, margin: 20, padding: 10, width: 300
-                    }} multiline={true} />
+            <View style={styles.items}  >
+                <Text style={styles.title}>Beschreibung: </Text>
+                <TextInput style={styles.input} multiline={true} />
 
-                <View style={{ flexDirection: 'row', alignContent: 'space-between' }} >
+                <View style={{ flexDirection: 'row', marginBottom:20 }} >
 
-                    <Icon style={{ margin: 5 }} name='camera' size={40} />
-                    <Icon style={{ margin: 5 }} name='plus-square' size={40} />
-                    <Icon style={{ margin: 5 }} name='plus-square' size={40} />
-                    <Icon style={{ margin: 5 }} name='plus-square' size={40} />
-                    <Icon style={{ margin: 5 }} name='plus-square' size={40} />
-                    <Icon style={{ margin: 5 }} name='plus-square' size={40} />
-
+                    <Icon style={{ margin: 5 }} name='camera' size={30} />
+                    <Icon style={{ margin: 5 }} name='plus-square' size={30} />
                 </View>
 
-                <TouchableOpacity><Text style={[styles.button]} onPress={() => alert('This function will be avaiable soon!')}> Save</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.btnText} onPress={() => alert('This function will be avaiable soon!')}>Speichern</Text>
+                </TouchableOpacity>
             </View>
 
         </View>
-
     )
-
 }
 
 export default FilingCaseScreen
@@ -40,40 +31,39 @@ export default FilingCaseScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        justifyContent: 'space-between'
-
+        backgroundColor: '#f3f5f6',
     },
-    head: {
-        alignItems: 'center',
-    },
-    case: {
+    items: {
         marginTop: 20,
-        flexDirection: 'column',
         alignItems: 'center',
-
+        backgroundColor: '#fff',
     },
     title: {
-        color: '#57B8FF',
-        fontSize: 20,
+        fontSize: 15,
+        paddingTop: 20,
+        paddingBottom: 20,
         fontWeight: 'bold',
+        color: '#002c6d'
     },
-
     input: {
-        borderColor: 'grey',
+        borderColor: '#d9d9d9',
         borderWidth: 1,
-        width: 200,
-        padding: 8,
-        margin: 10
+        width: '90%',
+        height: 100,
+        marginBottom:20,
 
     },
 
-    button: {
-        backgroundColor: '#57B8FF',
-        color: '#fff',
-        fontSize: 20,
+    btn: {
+        backgroundColor: '#002c6d',
+        borderRadius: 5,
+        alignSelf: 'center',
         padding: 10,
-        width: "50%",
-        marginBottom: 50
+        marginBottom: 20,
     },
+    btnText: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+    }
 });
