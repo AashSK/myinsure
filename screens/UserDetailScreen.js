@@ -22,6 +22,9 @@ const UserDetailScreen = ({ navigation }) => {
             setPersonDetails(data);
             setAddressString(`${data.BillingStreet}\n${data.BillingPostalCode} ${data.BillingCity}\n${data.BillingState}`);
         })
+        data.getDetails(data.getContractData).then(data => {
+            console.log(data);
+        })
     }, []);
     
     const List = [
