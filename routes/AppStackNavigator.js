@@ -4,6 +4,8 @@ import UserDetailScreen from '../screens/UserDetailScreen';
 import HomeScreen from '../screens/HomeScreen';
 import EditUserDetail from '../screens/EditUserDetail';
 import FilingCaseScreen from '../screens/FilingCaseScreen';
+import ViewContractsScreen from '../screens/ViewContractsScreen';
+import ViewInvoiceScreen from '../screens/ViewInvoiceScreen';
 
 
 const StackNavigator = createStackNavigator({
@@ -44,6 +46,18 @@ const StackNavigator = createStackNavigator({
         screen: FilingCaseScreen,
         navigationOptions: {
             title: 'Schaden Melden'
+        }
+    },
+    ContractView:{
+        screen: ViewContractsScreen,
+        navigationOptions: {
+            title:'Meine Verträge'
+        }
+    },
+    InvoiceView:{
+        screen: ViewInvoiceScreen,
+        navigationOptions: {
+            title:'Meine Rechnungen'
         }
     }
 }, {

@@ -105,12 +105,12 @@ export let updateData = (response, accData) => new Promise((resolve, reject) => 
 });
 
 export let getContractData = (response) => new Promise((resolve, reject) => {
-    // funtion to update person Account Info
+    // funtion to get Crontract Data 
     net.query(`SELECT Id, AccountId FROM User WHERE Id = '${response.userId}'`,
         (res) => {
             let account = res.records;
             let data = account.filter(data => {
-                net.query(`SELECT Id,Name FROM FinServ__FinancialAccount__c WHERE FinServ__PrimaryOwner__c = '${data.AccountId}'`,
+                net.query(`SELECT Id,Name,ad_Versicherungsscheinnummer__c FROM FinServ__FinancialAccount__c WHERE FinServ__PrimaryOwner__c = '${data.AccountId}'`,
                     (response) => {
                         resolve(response);
                     }, (error) => {

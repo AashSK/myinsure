@@ -6,7 +6,7 @@ const ViewInvoiceScreen = () => {
     //Flatlist to display Invoices
     return (
         <View>
-            <Text></Text>
+            <Text>Invoice</Text>
         </View>
     )
 }
