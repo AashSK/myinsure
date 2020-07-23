@@ -9,8 +9,8 @@ const HomeScreen = ({ navigation }) => {
         data: [
             { id: "1", title: 'Meine Daten', icon: 'user-circle-o', screen: 'UserDetail' },
             { id: "2", title: 'Schadensfall Melden', icon: 'bolt', screen: 'FilingCase' },
-            { id: "3", title: 'Rechnung einsehen', icon: 'file-text-o', screen: 'UserDetail' },
-            { id: "4", title: 'Verträge verwalten', icon: 'pencil-square', screen: 'UserDetail' },
+            { id: "3", title: 'Rechnung einsehen', icon: 'file-text-o', screen: 'InvoiceView' },
+            { id: "4", title: 'Verträge verwalten', icon: 'pencil-square', screen: 'ContractView' },
         ]
     };
 

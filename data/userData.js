@@ -57,6 +57,7 @@ export let updateDetails = (fetchData, accData) => new Promise((resolve, reject)
     )
 });
 
+// Query
 export let editableData = (response) => new Promise((resolve, reject) => {
     // funtion to query person Account Info
     net.query(`SELECT AccountId FROM User WHERE Id = '${response.userId}'`,
@@ -80,6 +81,7 @@ export let editableData = (response) => new Promise((resolve, reject) => {
     )
 });
 
+// Updating Data 
 export let updateData = (response, accData) => new Promise((resolve, reject) => {
     // funtion to update person Account Info
     net.query(`SELECT AccountId FROM User WHERE Id = '${response.userId}'`,
@@ -93,6 +95,27 @@ export let updateData = (response, accData) => new Promise((resolve, reject) => 
                     }, (error) => {
                         reject(alert('Your Data could not be updated'));
                     });
+            })
+
+        },
+        (error) => {
+            reject(alert('Failed to load Data, Please check your Internet Connection'));
+        }
+    )
+});
+
+export let getContractData = (response) => new Promise((resolve, reject) => {
+    // funtion to get Crontract Data 
+    net.query(`SELECT Id, AccountId FROM User WHERE Id = '${response.userId}'`,
+        (res) => {
+            let account = res.records;
+            let data = account.filter(data => {
+                net.query(`SELECT Id,Name,ad_Versicherungsscheinnummer__c FROM FinServ__FinancialAccount__c WHERE FinServ__PrimaryOwner__c = '${data.AccountId}'`,
+                    (response) => {
+                        resolve(response);
+                    }, (error) => {
+                        reject(alert('Failed to load Data, Please check your Internet Connection'));
+                    })
             })
 
         },
