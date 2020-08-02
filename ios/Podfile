@@ -50,6 +50,8 @@ pod 'SalesforceReact', :path => '../node_modules/react-native-force'
 
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
 end
 
 # Comment the following if you do not want the SDK to emit signpost events for instrumentation. Signposts are  enabled for non release version of the app.

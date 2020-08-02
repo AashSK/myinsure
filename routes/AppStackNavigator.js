@@ -4,6 +4,7 @@ import UserDetailScreen from '../screens/UserDetailScreen';
 import HomeScreen from '../screens/HomeScreen';
 import EditUserDetail from '../screens/EditUserDetail';
 import FilingCaseScreen from '../screens/FilingCaseScreen';
+import FilingCaseWeb from '../screens/FilingCaseWeb';
 import ViewContractsScreen from '../screens/ViewContractsScreen';
 import ViewInvoiceScreen from '../screens/ViewInvoiceScreen';
 
@@ -44,6 +45,12 @@ const StackNavigator = createStackNavigator({
     },
     FilingCase: {
         screen: FilingCaseScreen,
+        navigationOptions: {
+            title: 'Schaden Melden'
+        }
+    },
+    FilingCaseWeb: {
+        screen: FilingCaseWeb,
         navigationOptions: {
             title: 'Schaden Melden'
         }
