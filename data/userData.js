@@ -1,9 +1,12 @@
 import { oauth, net } from 'react-native-force';
 
+
 export let getDetails = (fetchData) => new Promise((resolve, reject) => {
     // funtion to get User Detail
     oauth.getAuthCredentials(
-        (response) => resolve(fetchData(response)),
+        (response) => {
+            resolve(fetchData(response))
+        },
         () => {
             oauth.authenticate(
                 (response) => {
@@ -109,15 +112,15 @@ export let getContractData = (response) => new Promise((resolve, reject) => {
     net.query(`SELECT Id, AccountId FROM User WHERE Id = '${response.userId}'`,
         (res) => {
             let account = res.records;
-            let data = account.filter(data => {
-                net.query(`SELECT Id,Name,ad_Versicherungsscheinnummer__c FROM FinServ__FinancialAccount__c WHERE FinServ__PrimaryOwner__c = '${data.AccountId}'`,
+            account.filter(data => {
+                net.query(`SELECT Id, ad_Zahlungsart__c,FinServ__RecordTypeName__c,ad_Vertragsstatus__c,FinServ__OpenDate__c,FinServ__PaymentFrequency__c,FinServ__CloseDate__c,ad_Tarif__c,ad_Versicherungsscheinnummer__c FROM FinServ__FinancialAccount__c WHERE FinServ__PrimaryOwner__c = '${data.AccountId}'`,
                     (response) => {
-                        resolve(response);
-                    }, (error) => {
+                        resolve(response.records);
+                    },
+                    (error) => {
                         reject(alert('Failed to load Data, Please check your Internet Connection'));
                     })
             })
-
         },
         (error) => {
             reject(alert('Failed to load Data, Please check your Internet Connection'));

@@ -21,24 +21,30 @@ const EditUserDetail = ({ navigation }) => {
     }, []);
 
     changeData = () => {
-        Object.assign(person, {
-            "BillingCity": city ? city : personDetails.BillingCity,
-            "BillingPostalCode": postalCode ? postalCode : personDetails.BillingPostalCode,
-            "BillingState": state ? state : personDetails.BillingState,
-            "BillingStreet": street ? street : personDetails.BillingStreet,
-            "PersonEmail": email ? email : personDetails.PersonEmail,
-            "PersonMobilePhone": phone ? phone : personDetails.PersonMobilePhone,
-        })
 
-        data.updateDetails(data.updateData, person);
+        if (!city && !postalCode && !state && !street && !email && !phone) {
+            alert('Pleas Complete all Fields!');
+        } else {
+            Object.assign(person, {
+                "BillingCity": city ? city : personDetails.BillingCity,
+                "BillingPostalCode": postalCode ? postalCode : personDetails.BillingPostalCode,
+                "BillingState": state ? state : personDetails.BillingState,
+                "BillingStreet": street ? street : personDetails.BillingStreet,
+                "PersonEmail": email ? email : personDetails.PersonEmail,
+                "PersonMobilePhone": phone ? phone : personDetails.PersonMobilePhone,
+            })
 
-        setCity('');
-        setStreet('');
-        setState('');
-        setPhone('');
-        setPostalCode('');
-        setPostalCode('');
-
+            data.updateDetails(data.updateData, person).then(() => {
+                setCity('');
+                setStreet('');
+                setState('');
+                setPhone('');
+                setPostalCode('');
+                setPostalCode('');
+                navigation.navigate('UserDetail')
+            }
+            )
+        }
     }
 
     return (
@@ -49,35 +55,35 @@ const EditUserDetail = ({ navigation }) => {
 
                     <Text style={styles.label}>Kontaktadresse</Text>
                     <TextInput style={styles.input}
-                        placeholder='Straße'
+                        placeholder={`Straße: ${personDetails.BillingStreet}`}
                         value={street}
                         onChangeText={(val) => { setStreet(val) }} />
 
                     <TextInput style={styles.input}
                         keyboardType='numeric'
-                        placeholder='Postleitzahl'
+                        placeholder={`Postleitzahl: ${personDetails.BillingPostalCode}`}
                         value={postalCode}
                         onChangeText={(val) => { setPostalCode(val) }} />
 
                     <TextInput style={styles.input}
-                        placeholder='Ort'
+                        placeholder={`Stadt: ${personDetails.BillingCity}`}
                         value={city}
                         onChangeText={(val) => { setCity(val) }} />
 
                     <TextInput style={styles.input}
-                        placeholder='Bundesstaat'
+                        placeholder={`Bundesstaat: ${personDetails.BillingState}`}
                         value={state}
                         onChangeText={(val) => { setState(val) }} />
 
                     <Text style={styles.label}>E-Mail und Rufnummer</Text>
                     <TextInput style={styles.input}
-                        placeholder='E-Mail adresse'
+                        placeholder={`E-mail: ${personDetails.PersonEmail}`}
                         value={email}
                         onChangeText={(val) => { setEmail(val) }} />
 
                     <TextInput style={styles.input}
                         keyboardType='phone-pad'
-                        placeholder='Telefonnummer'
+                        placeholder={`Telefonnummer: ${personDetails.PersonMobilePhone}`}
                         value={phone}
                         onChangeText={(val) => { setPhone(val) }} />
 

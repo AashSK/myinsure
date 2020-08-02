@@ -11,6 +11,7 @@ const HomeScreen = ({ navigation }) => {
             { id: "2", title: 'Schadensfall Melden', icon: 'bolt', screen: 'FilingCase' },
             { id: "3", title: 'Rechnung einsehen', icon: 'file-text-o', screen: 'InvoiceView' },
             { id: "4", title: 'Verträge verwalten', icon: 'pencil-square', screen: 'ContractView' },
+            { id: "5", title: 'Schadensfall Melden', icon: 'bolt', screen: 'FilingCaseWeb' },
         ]
     };
 
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
         width: 180,
         height: 180,
         padding: 10,
-        marginTop: 80,
+        marginTop: 40,
         alignItems: 'center',
         justifyContent: 'center',
     },

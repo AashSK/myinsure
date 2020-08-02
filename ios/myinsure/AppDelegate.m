@@ -66,7 +66,7 @@
 //    [self registerForRemotePushNotifications];
     
     //Uncomment the code below to see how you can customize the color, textcolor, font and fontsize of the navigation bar
-//    [self customizeLoginView];
+    [self customizeLoginView];
     
     [SFSDKAuthHelper loginIfRequired:^{
         [self setupRootViewController];
@@ -82,7 +82,7 @@
     // Set showSettingsIcon to NO if you want to hide the settings icon on the nav bar
     loginViewConfig.showSettingsIcon = YES;
     // Set showNavBar to NO if you want to hide the top bar
-    loginViewConfig.showNavbar = YES;
+    loginViewConfig.showNavbar = NO;
     loginViewConfig.navBarColor = [UIColor colorWithRed:0.051 green:0.765 blue:0.733 alpha:1.0];
     loginViewConfig.navBarTitleColor = [UIColor whiteColor];
     loginViewConfig.navBarFont = [UIFont fontWithName:@"Helvetica" size:16.0];
