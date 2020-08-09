@@ -94,7 +94,7 @@ export let updateData = (response, accData) => new Promise((resolve, reject) => 
                 net.update("Account",
                     data.AccountId, accData,
                     (response) => {
-                        resolve(alert('Updated Successfully'));
+                        resolve(console.log(`Success`));
                     }, (error) => {
                         reject(alert('Your Data could not be updated'));
                     });

@@ -7,6 +7,8 @@ import AppDrawerNavigator from './routes/AppDrawerNavigator'
 
 export function App() {
 
+    console.disableYellowBox = true;
+    
     return (
         <View style={{ flex: 1 }}>
             <AppDrawerNavigator />

@@ -33,9 +33,9 @@ const ViewContractsScreen = () => {
                         }} >
                             <View style={styles.item}>
                                 <View style={styles.itemContainer}>
-                                    <View style={{ flex: 1, flexDirection: "row", alignItems: 'center', }}>
+                                    <View style={{ flex: 1, flexDirection: "row", alignItems: 'center', justifyContent: 'space-between' }}>
                                         <Text style={styles.itemHeader} >{item.FinServ__RecordTypeName__c}</Text>
-                                        {!item.show && (<Icon name="chevron-down" size={18} />)}
+                                        {!item.show && (<Icon style={{ paddingRight: 10 }} name="chevron-down" size={18} />)}
                                     </View>
                                     {item.show && (
                                         <View>

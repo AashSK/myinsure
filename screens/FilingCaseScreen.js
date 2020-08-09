@@ -2,11 +2,28 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, TouchableHighlight, Image, TouchableOpacity, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import ImagePicker from 'react-native-image-picker'
+import * as fileCase from '../data/fileCase'
+import * as accData from '../data/accData'
+import * as authData from '../data/authData'
 
 
 const FilingCaseScreen = ({ navigation }) => {
 
     const [photo, setPhoto] = useState({ src: { uri: '' } });
+    const [subject, setSubject] = useState('');
+    const [description, setDescription] = useState('');
+    const [success, setSuccess] = useState(false);
+    const [userData, setUserData] = useState('');
+    let caseData = {};
+
+    useEffect(() => {
+        async function getData() {
+            let authInfo = await authData.getAuthData();
+            let data = await accData.getAccountData(authInfo);
+            setUserData(data);
+        }
+        getData();
+    }, []);
 
     hadleChoosePhoto = () => {
         const options = {
@@ -26,25 +43,65 @@ const FilingCaseScreen = ({ navigation }) => {
         })
     }
 
+    async function changeData() {
+
+        if (!subject && !description) {
+            alert('Bitte alle Felder ausfüllen!');
+        } else {
+            Object.assign(caseData, {
+                "Subject": subject,
+                "Description": description,
+                "Origin": "Mobile App",
+                "Reason": "Schadensmeldung"
+                // File params expected to be of the form: 
+                //{<fileParamNameInPost>: 
+                //{fileMimeType:<someMimeType>, fileUrl:<fileUrl>, fileName:<fileNameForPost>}}
+                
+            })
+            fileCase.updateCaseData(caseData).then(() => {
+                setSuccess(true);
+                setTimeout(() => setSuccess(false), 3000);
+                setSubject('');
+                setDescription('');
+            }
+            )
+        }
+    }
+
+
     return (
         <View style={styles.container}>
             <View style={styles.items}  >
+                <Text style={styles.title}>Anlass: </Text>
+                <TextInput
+                    style={styles.subject}
+                    placeholder={'Unfall'}
+                    value={subject}
+                    onChangeText={(val) => { setSubject(val) }} />
                 <Text style={styles.title}>Beschreibung: </Text>
-                <TextInput style={styles.input} multiline={true} />
+                <TextInput
+                    style={styles.description}
+                    placeholder={'Unfall innenstadt Dortmund!'}
+                    multiline={true}
+                    value={description}
+                    onChangeText={(val) => { setDescription(val) }} />
                 {photo.src.uri !== '' && (<Image
                     source={{ uri: photo.src.uri }}
                     style={{ marginBottom: 20, width: 150, height: 150 }}
-                />)}
-                <View style={{ flexDirection: 'row', marginBottom: 20 }} >
+                />
+                )}
+                {/* <View style={{ flexDirection: 'row', marginBottom: 20 }} >
                     <TouchableOpacity onPress={() => hadleChoosePhoto()}>
                         <Icon style={{ margin: 5 }} name='camera' size={30} />
                     </TouchableOpacity>
 
                     <Icon style={{ margin: 5 }} name='plus-square' size={30} />
-                </View>
+                </View> */}
+
+                {success && (<View style={styles.success}><Text style={styles.successTxt}>Änderung erfolgreich</Text></View>)}
 
                 <TouchableOpacity style={styles.btn}>
-                    <Text style={styles.btnText} onPress={() => alert('This function will be avaiable soon!')}>Speichern</Text>
+                    <Text style={styles.btnText} onPress={() => changeData()}>Speichern</Text>
                 </TouchableOpacity>
             </View>
 
@@ -71,11 +128,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#002c6d'
     },
-    input: {
+    subject: {
         borderColor: '#d9d9d9',
-        borderWidth: 1,
-        width: '90%',
-        height: 100,
+        borderBottomWidth: 1,
+        padding: 10,
+        width: '100%',
+        marginBottom: 10,
+    },
+    description: {
+        borderColor: '#d9d9d9',
+        borderBottomWidth: 1,
+        padding: 10,
+        width: '100%',
         marginBottom: 20
     },
     btn: {
@@ -87,6 +151,16 @@ const styles = StyleSheet.create({
     },
     btnText: {
         color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    success:{
+        backgroundColor: 'lightgreen',
+        alignItems: 'center',
+        padding: 5,
+        margin:10
+    },
+    successTxt:{
         fontSize: 18,
         fontWeight: 'bold',
     }
