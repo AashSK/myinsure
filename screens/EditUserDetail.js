@@ -11,6 +11,7 @@ const EditUserDetail = ({ navigation }) => {
     const [state, setState] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
+    const [success, setSuccess] = useState(false);
 
     let person = {};
 
@@ -35,13 +36,14 @@ const EditUserDetail = ({ navigation }) => {
             })
 
             data.updateDetails(data.updateData, person).then(() => {
+                setSuccess(true);
                 setCity('');
                 setStreet('');
                 setState('');
                 setPhone('');
                 setPostalCode('');
                 setPostalCode('');
-                navigation.navigate('UserDetail')
+                setTimeout(() => navigation.navigate('UserDetail'), 3000);
             }
             )
         }
@@ -86,11 +88,12 @@ const EditUserDetail = ({ navigation }) => {
                         placeholder={`Telefonnummer: ${personDetails.PersonMobilePhone}`}
                         value={phone}
                         onChangeText={(val) => { setPhone(val) }} />
-
+                    {success && (<View style={styles.success}><Text style={styles.successTxt}>Änderung erfolgreich</Text></View>)}
                     <TouchableOpacity style={styles.btn} onPress={() => {
-                        changeData()
+                        changeData();
                     }}>
                         <Text style={styles.btnText}>Ändern</Text>
+
                     </TouchableOpacity>
 
                 </View>
@@ -139,4 +142,14 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
+    success:{
+        backgroundColor: 'lightgreen',
+        alignItems: 'center',
+        padding: 5,
+        margin:3
+    },
+    successTxt:{
+        fontSize: 18,
+        fontWeight: 'bold',
+    }
 });

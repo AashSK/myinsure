@@ -34,7 +34,7 @@ const StackNavigator = createStackNavigator({
     UserDetail: {
         screen: UserDetailScreen,
         navigationOptions: {
-            title: 'Meine Daten'
+            title: 'Persönliche Daten'
         }
     },
     EditUserDetail: {
