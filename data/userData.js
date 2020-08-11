@@ -128,3 +128,29 @@ export let getContractData = (response) => new Promise((resolve, reject) => {
     )
 });
 
+export let fetchBills = (response) => new Promise((resolve, reject) => {
+
+    net.query(`SELECT AccountId FROM User WHERE Id = '${response.userId}'`,
+        (res) => {
+            let account = res.records;
+
+            account.filter(data => {
+                net.query(`SELECT  Name,Id,Vertrag__c,FinServ__StatementDate__c, FinServ__PaymentDueDate__c, FinServ__BillingPeriodEnd__c, FinServ__Payments__c FROM FinServ__BillingStatement__c WHERE FinServ__FinancialAccount__r.FinServ__PrimaryOwner__c = '${data.AccountId}'`,
+                    (response) => {
+                        resolve(response.records);
+                        console.log(response)
+
+                    },
+                    (error) => {
+                        reject(alert('Failed to load Rechnung,Please check your Internet Connection'));
+                    }
+                )
+            })
+        },
+        (error) => {
+            reject(alert('Failed to load Data, Please check your Internet Connection'));
+        }
+    )
+});
+
+
