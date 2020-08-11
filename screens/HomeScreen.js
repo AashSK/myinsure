@@ -4,17 +4,17 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 
 const HomeScreen = ({ navigation }) => {
-    
+
     const screenInfo = {
         data: [
             { id: "1", title: 'Persönliche Daten', icon: 'user-circle-o', screen: 'UserDetail' },
-            { id: "2", title: 'Schadensfall Melden', icon: 'bolt', screen: 'FilingCase' },
-            { id: "3", title: 'Rechnungen', icon: 'file-text-o', screen: 'InvoiceView' },
             { id: "4", title: 'Verträge', icon: 'pencil-square', screen: 'ContractView' },
-            { id: "5", title: 'Schaden (Web beta)', icon: 'bolt', screen: 'FilingCaseWeb' },
+            { id: "3", title: 'Rechnungen', icon: 'file-text-o', screen: 'InvoiceView' },
+            { id: "2", title: 'Schadensfall Melden', icon: 'bolt', screen: 'FilingCase' },
+            { id: "5", title: 'Schaden (Web)', icon: 'bolt', screen: 'FilingCaseWeb' },
         ]
     };
-    
+
     return (
         <View style={styles.container} >
             <FlatList

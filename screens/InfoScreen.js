@@ -1,19 +1,24 @@
-import React from 'react'
-import { Text, View, Button, StyleSheet } from 'react-native'
+import React, { Component } from 'react'
+import { Text, View, Button, StyleSheet, TouchableOpacity } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 
-const Infoscreen = ({ navigation }) => {
- // No Header displayed to display header create new Stacknavigtor
+const InfoScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text> Info Screen </Text>
-            <Button title="Home" onPress={() =>
-                navigation.navigate('Startseite')
-            } />
+            <Text> Information Screen </Text>
         </View>
     )
 }
+
+InfoScreen.navigationOptions = ({ screenProps }) => ({
+    headerLeft: (
+        <TouchableOpacity onPress={() => { screenProps.openDrawer() }} >
+            <Icon style={{ color: '#fff', marginLeft: 20 }} name="navicon" size={24} />
+        </TouchableOpacity>
+    ),
+})
 
 const styles = StyleSheet.create({
     container: {
@@ -24,4 +29,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Infoscreen;
+export default InfoScreen
