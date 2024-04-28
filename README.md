@@ -1,4 +1,6 @@
 # MyInsure
+React Native IOS App for customer insurance services 
+-realised with salesforce API
 
 ## Node 
 
