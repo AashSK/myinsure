@@ -1,5 +1,5 @@
 # MyInsure
-React Native iOS app for customer insurance services, built with the Salesforce Mobile SDK and integrated with Salesforce CRM
+React Native iOS app for customer insurance services, built with the Salesforce Mobile SDK and integrated with Salesforce CRM in collaboration with Adesso SE
 
 ## Node 
 
